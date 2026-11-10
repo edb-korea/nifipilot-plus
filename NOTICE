@@ -1,0 +1,30 @@
+nifipilot-plus
+This project is licensed under the Apache License 2.0 (see LICENSE).
+
+It combines and builds on two open-source projects:
+
+1. cloudera/NiFi-MCP-Server — https://github.com/cloudera/NiFi-MCP-Server
+   (reference commit 9af7ce2930814e974d9c8b26330f7b2cb7431324)
+   Copyright Cloudera, Inc. Licensed under the Apache License 2.0.
+   Used as a functional reference for the tool catalogue and REST request shapes, and parts
+   are adapted into this repository:
+     - src/nifipilot_plus/guides/flow_builder.py   (copied, header added)
+     - src/nifipilot_plus/guides/best_practices.py (modified)
+     - src/nifipilot_plus/guides/jdbc.py           (extracted)
+     - src/nifipilot_plus/client.py and src/nifipilot_plus/tools/* (re-implemented with
+       httpx and optional revisions; request/response shapes follow the original)
+   Changes are marked in the header of each adapted file, as required by Apache-2.0 §4(b).
+   The Knox authentication layer of the original is intentionally NOT included.
+
+2. Giojacke/mcp-nifipilot (NiFiPilot) — https://github.com/Giojacke/mcp-nifipilot
+   (reference commit fd04b9730c4f57ccad2da4791b377d37388867e6)
+   Declared as MIT in its README (see licenses/MIT-mcp-nifipilot.txt). The upstream repository
+   did not contain a LICENSE file at that commit, so the copyright holder line is generic.
+   Design ideas were taken from it: readonly/full mode, dry-run, audit log, NiFi login
+   handling and HTTP/Docker deployment. To the best of our knowledge no source code or
+   documentation text of it is included: the agent instructions (skills/nifi-operator.md)
+   were originally adapted from its skill document and have since been rewritten from scratch.
+   The MIT text is kept as an acknowledgment.
+
+Apache NiFi, NiFi and Apache are trademarks of the Apache Software Foundation. This project is
+not affiliated with or endorsed by the ASF, Cloudera, or the authors of the projects above.
